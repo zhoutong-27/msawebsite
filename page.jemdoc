@@ -1,0 +1,26 @@
+# jemdoc: {page.html}, nofooter
+= Juntao Chen
+
+~~~
+{}{img_left}{./images/image.jpg}{profile pic}{120px}{150px}{}
+Master in Computer Science, \n
+[https://www.iffs.uestc.edu.cn/iffs_en/Home.htm IFFS, UESTC, China]\n
+ \n
+Email: ttscj\_chen(at)foxmail.com\n
+Github: [https://github.com/Guuhua]
+~~~
+
+== Education
+- Sep 2020 \- Present: Master in Computer Science, [https://en.uestc.edu.cn/ UESTC]
+- Feb 2019 \- June 2019: Exchange student, [http://en.fcu.edu.tw/ Feng Chia University]
+- Sep 2016 \- July 2020: Bachelor in Spatial Science and digital technology, [https://en.uestc.edu.cn/ UESTC]
+
+== Research
+My research interests include
+- [http://lab.malab.cn/~cjt/MSA Multiple Sequence Alignment]
+- Deep Learning in sequence classification
+- Parallel Computing
+
+== Papers
+
+- Juntao Chen, Jing Li, and Quan Zou, DeepM6ASeq-EL: Prediction of Human N6-Methyladenosine (m6A) Sites with LSTM and Ensemble Learning. Frontier of computer science, Accept (28-Jun-2020)\

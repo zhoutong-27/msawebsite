@@ -1,0 +1,128 @@
+# jemdoc: menu{MENU}{msa.html}, nofooter
+= 多序列比对
+
+== SP measures
+
+Sum of pairs (SP) measures: Scoring a alignment based on pairwise alignments.
+
+\(
+SP\_score(\alpha)=\sum_{i<j} score(\alpha_{ij})
+\)
+
+
+计算方式分为两种（注：p(\-,\-)=0）:
+- 对多序列对齐中的每一列得分进行计算，最后相加
+- 对多序列对齐中的每一对PSA得分进行计算，最后相加
+
+
+
+== 星比对
+
+~~~
+{算法实现思路}
+. 在序列中选择一个中心序列 \(S_c)\，中心序列的选择算法，在下文详细阐述
+. 将中心序列\(S_c)\和其余序列进行双序列比对，得到k\-1个双序列比对
+. 将k\-1个双序列比对进行整合，整合原则\“once a gap, always a gpa\”
+~~~
+
+=== 例子
+~~~
+{}{python}
+S1 ATTGCCATT
+S2 ATGGCCATT
+S2 ATGGCCATT
+S4 ATCTTCTT
+S5 ACTGACC
+~~~
+
+1. 建立得分矩阵，取得最大分值的序列做为中心序列。
+\(
+\sum_{i\neq c}score(s_i, s_c)
+\)
+
+~~~
+{}{raw}
+<center>
+<img src="https://cdn.jsdelivr.net/gh/Guuhua/PicBed@master/imgdllwin10/20201217160457.png" width="40%">
+</center>
+~~~
+
+2. 将中心序列与其余序列做比对。
+~~~
+{}{raw}
+<center>
+<img src="https://cdn.jsdelivr.net/gh/Guuhua/PicBed@master/imgdllwin10/20201217160656.png" width="40%">
+</center>
+~~~
+
+3. 将双序列比对整合到一起，得到MSA。
+~~~
+{}{raw}
+<center>
+<img src="https://cdn.jsdelivr.net/gh/Guuhua/PicBed@master/imgdllwin10/20201217160822.png" width="40%">
+</center>
+~~~
+
+[https://github.com/malabz/Jtmsa/blob/master/MSA_star_align.py 参考代码链接]
+
+=== 多核并行
+
+由上文可知，建立得分矩阵选取中心序列是非常耗时的。因此在建立得分矩阵的这个环节，我们可以采取多核并行，加快程序的运行速度。由实际的运行速度来看，并行计算要比单核运行快3.6倍左右（根据电脑的核心数有关，测试电脑的核心数是4核）。
+
+
+[https://github.com/malabz/Jtmsa/blob/master/MSA_Star_Multi_core.py 参考代码链接]
+
+
+== 树比对
+
+~~~
+{算法实现思路}
+. 建立序列间的距离矩阵，常见的算法有k-tuple、fasta和动态规划等
+. 使用聚类算法，生成指导树，常见的算法有 Neighbor Joining (NJ)、UPGMA等
+. 沿着指导树的顺序进行比对
+~~~
+
+=== 例子
+~~~
+{}{python}
+S1 ATTGCCATT
+S2 ATGGCCATT
+S3 ATCTTCTT
+S4 ACTGACC
+~~~
+
+1. 生成距离矩阵，并构建指导树
+~~~
+{}{raw}
+<center>
+<img src="https://cdn.jsdelivr.net/gh/Guuhua/PicBed@master/imgdllLinux/20210510181827.png" width="40%">
+</center>
+~~~!
+
+2. 沿着指导树的顺序进行比对
+
+~~~
+{}{}
+合并S1和S3
+    S1:AT-TGCCATT
+    
+    S3:ATCTTC--TT
+合并(S1,S3)和S2
+    S1:AT-TGCCATT
+    S3:ATCTTC--TT
+
+    S2:AT-GGCCATT
+合并(S1,S3,S2)和S4
+    S1:AT-TGCCATT
+    S3:ATCTTC--TT
+    S2:AT-GGCCATT
+
+    S4:ACTGACC---
+比对完成
+    S1:AT-TGCCATT
+    S2:AT-GGCCATT
+    S3:ATCTTC--TT
+    S4:ACTGACC---
+~~~
+
+[https://github.com/malabz/JMSA 参考代码链接]

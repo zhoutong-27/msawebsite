@@ -1,0 +1,41 @@
+# jemdoc: menu{MENU}{datasets.html}, nofooter
+= 测试数据集
+
+== mitochondrial genomes
+
+- 人类线粒体基因组，672条高度相似的DNA序列，最大长度16579bp
+- Ref: Tanaka M., et al. (2004) Mitochondrial genome variation in eastern Asia and the peopling of Japan. Genome Res,14(10a), 1832-1850.
+- 下载 (zipped file): [http://lab.malab.cn/soft/halign/data/mt1x.zip 1x] (219KB)   [http://lab.malab.cn/soft/halign/data/mt20x.zip 20x] (4.27MB)  [http://lab.malab.cn/soft/halign/data/mt50x.zip 50x] (10.666MB)  [http://lab.malab.cn/soft/halign/data/mt100x.zip 100x] (21.325MB)
+
+== Human Genome
+
+- 人类基因组基因，含有21个人的完整基因。因数据量过大，仅提供基因组的下载链接。
+- [http://lab.malab.cn/~cjt/MSA/data/Human_Genome_21.html link]
+
+== 16s rRNA
+
+- 16S rRNA基因是细菌上编码rRNA相对应的DNA序列，相似度不高，最大长度1586bp
+- Ref: DeSantis, T. Z., et al.(2006) NAST: a multiple sequence alignment server for comparative analysis of 16S rRNA genes. Nucleic Acids Res, 34, W394-399.
+- 下载 (zipped file): [http://lab.malab.cn/soft/halign/data/16ssmall.zip small] (21.864MB)  [http://lab.malab.cn/soft/halign/data/16sbig.zip big] (197.224MB)
+
+== COVID-19
+
+- 新冠病毒基因序列，总共156条，相似度较高，长度大于29000bp
+- [http://lab.malab.cn/~zsl/Periodical_results/data/2019nCoVR_20200301.zip]
+- 新冠病毒基因序列，总共1020条，长度层次不齐，未经过有效挑选
+- [http://lab.malab.cn/~cjt/MSA/data/SARS-CoV-2_20200417.7z]
+- 新冠病毒基因序列，总共13w条，相似度较高，长度大于29000bp
+    (序列已对齐，对比前请去除'-')
+- [http://lab.malab.cn/~cjt/MSA/data/msa_1012.tar-2.xz]
+- 新冠病毒基因序列，总共24310条，相似度较高，长度大于29000bp
+- [http://lab.malab.cn/~cjt/MSA/data/SARS-CoV-2.7z]
+
+== RNA模拟数据
+
+- 含二级结构，NEXUS格式，相似度很高
+- [https://kim.bio.upenn.edu/software/csd.shtml]
+
+== 模拟noncoding数据
+
+- 相似度较低，有较多类型的数据，fasta格式
+- [http://bioinfolab.unl.edu/~cstrope/iSG/benchmark/index.html]

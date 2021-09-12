@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>多序列比对</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">序列比对</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="psa.html">双序列比对</a></div>
+<div class="menu-item"><a href="msa.html" class="current">多序列比对</a></div>
+<div class="menu-item"><a href="datasets.html">测试数据集</a></div>
+<div class="menu-item"><a href="https://github.com/malabz/JMSA" target="blank">Github</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>多序列比对</h1>
+</div>
+<h2>SP measures</h2>
+<p>Sum of pairs (SP) measures: Scoring a alignment based on pairwise alignments.
+</p>
+<p style="text-align:center">
+\[
+SP\_score(\alpha)=\sum_{i&lt;j} score(\alpha_{ij})
+\]
+</p><p>计算方式分为两种（注：p(-,-)=0）:
+</p>
+<ul>
+<li><p>对多序列对齐中的每一列得分进行计算，最后相加
+</p>
+</li>
+<li><p>对多序列对齐中的每一对PSA得分进行计算，最后相加
+</p>
+</li>
+</ul>
+<h2>星比对</h2>
+<div class="infoblock">
+<div class="blocktitle">算法实现思路</div>
+<div class="blockcontent">
+<ol>
+<li><p>在序列中选择一个中心序列 (S_c)，中心序列的选择算法，在下文详细阐述
+</p>
+</li>
+<li><p>将中心序列(S_c)和其余序列进行双序列比对，得到k-1个双序列比对
+</p>
+</li>
+<li><p>将k-1个双序列比对进行整合，整合原则“once a gap, always a gpa”
+</p>
+</li>
+</ol>
+</div></div>
+<h3>例子</h3>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+S1 ATTGCCATT
+S2 ATGGCCATT
+S2 ATGGCCATT
+S4 ATCTTCTT
+S5 ACTGACC
+</pre></div></div>
+<p>1. 建立得分矩阵，取得最大分值的序列做为中心序列。
+</p>
+<p style="text-align:center">
+\[
+\sum_{i\neq c}score(s_i, s_c)
+\]
+</p><center>
+<img src="https://cdn.jsdelivr.net/gh/Guuhua/PicBed@master/imgdllwin10/20201217160457.png" width="40%">
+</center>
+<p>2. 将中心序列与其余序列做比对。
+</p>
+<center>
+<img src="https://cdn.jsdelivr.net/gh/Guuhua/PicBed@master/imgdllwin10/20201217160656.png" width="40%">
+</center>
+<p>3. 将双序列比对整合到一起，得到MSA。
+</p>
+<center>
+<img src="https://cdn.jsdelivr.net/gh/Guuhua/PicBed@master/imgdllwin10/20201217160822.png" width="40%">
+</center>
+<p><a href="https://github.com/malabz/Jtmsa/blob/master/MSA_star_align.py" target=&ldquo;blank&rdquo;>参考代码链接</a>
+</p>
+<h3>多核并行</h3>
+<p>由上文可知，建立得分矩阵选取中心序列是非常耗时的。因此在建立得分矩阵的这个环节，我们可以采取多核并行，加快程序的运行速度。由实际的运行速度来看，并行计算要比单核运行快3.6倍左右（根据电脑的核心数有关，测试电脑的核心数是4核）。
+</p>
+<p><a href="https://github.com/malabz/Jtmsa/blob/master/MSA_Star_Multi_core.py" target=&ldquo;blank&rdquo;>参考代码链接</a>
+</p>
+<h2>树比对</h2>
+<div class="infoblock">
+<div class="blocktitle">算法实现思路</div>
+<div class="blockcontent">
+<ol>
+<li><p>建立序列间的距离矩阵，常见的算法有k-tuple、fasta和动态规划等
+</p>
+</li>
+<li><p>使用聚类算法，生成指导树，常见的算法有 Neighbor Joining (NJ)、UPGMA等
+</p>
+</li>
+<li><p>沿着指导树的顺序进行比对
+</p>
+</li>
+</ol>
+</div></div>
+<h3>例子</h3>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+S1 ATTGCCATT
+S2 ATGGCCATT
+S3 ATCTTCTT
+S4 ACTGACC
+</pre></div></div>
+<p>1. 生成距离矩阵，并构建指导树
+</p>
+<center>
+<img src="https://cdn.jsdelivr.net/gh/Guuhua/PicBed@master/imgdllLinux/20210510181827.png" width="40%">
+</center>
+<p>2. 沿着指导树的顺序进行比对
+</p>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+合并S1和S3
+    S1:AT-TGCCATT
+
+    S3:ATCTTC--TT
+合并(S1,S3)和S2
+    S1:AT-TGCCATT
+    S3:ATCTTC--TT
+
+    S2:AT-GGCCATT
+合并(S1,S3,S2)和S4
+    S1:AT-TGCCATT
+    S3:ATCTTC--TT
+    S2:AT-GGCCATT
+
+    S4:ACTGACC---
+比对完成
+    S1:AT-TGCCATT
+    S2:AT-GGCCATT
+    S3:ATCTTC--TT
+    S4:ACTGACC---
+</pre></div></div>
+<p><a href="https://github.com/malabz/JMSA" target=&ldquo;blank&rdquo;>参考代码链接</a>
+</p>
+</td>
+</tr>
+</table>
+</body>
+</html>
