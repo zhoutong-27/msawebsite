@@ -1,36 +1,26 @@
-```shell
-$ python jemdoc
-Usage: jemdoc [OPTIONS] [SOURCEFILE]
-  Produces html markup from a jemdoc SOURCEFILE.
-
-  Most of the time you can use jemdoc without any additional flags.
-  For example, typing
-
-jemdoc index
-
-  will produce an index.html from index.jemdoc, using a default
-  configuration.
-
-  Some configuration options can be overridden by specifying a
-  configuration file.  You can use
-
-jemdoc --show-config
-
-  to print a sample configuration file (which includes all of the
-  default options). Any or all of the configuration [blocks] can be
-  overwritten by including them in a configuration file, and running,
-  for example,
-
-jemdoc -c mywebsite.conf index.jemdoc
-
-  You can view version and installation details with
-
-jemdoc --version
-
-  See http://jemdoc.jaboc.net/ for many more details.
-
-$ python jemdoc -c mysite.conf *.jemdoc
-```
-
 ## jemdoc
 
+jemdoc is a light text-based markup language designed for creating websites. It takes a text file written with [jemdoc markup](https://jemdoc.jaboc.net/example.html), an optional configuration file and an optional menu file, and makes static websites that look something like this one, [that one](http://stanford.edu/~boyd) or [another one](http://www.stanford.edu/class/ee364a/).
+
+[jemdoc on github.](https://github.com/jem/jemdoc)
+
+### Usage
+
+1. edit or add the `doc/**.jemdoc` file 
+
+   more things about how to edit the jemdoc file, please view the [website](https://jemdoc.jaboc.net/example.html).
+
+2. use python script  to create `html/**.html` file 
+
+   ```shell
+   # python3
+   
+   # for signle file
+   $ python jemdoc -c mysite.conf -o html/ /doc/***.jemdoc
+   # for all files
+   $ python jemdoc -c mysite.conf -o html/ /doc/*.jemdoc
+   ```
+
+### License
+
+Copyright © 2007–2012 Jacob Mattingley.
