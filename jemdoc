@@ -1616,7 +1616,17 @@ def main():
   if outname is not None and not os.path.isdir(outname) and len(innames) > 1:
     raise RuntimeError('cannot handle one outfile with multiple infiles')
 
+  # print(innames)
   for inname in innames:
+    infile = io.open(inname, 'rb')
+    outfile = ''
+    if '/' in inname:
+      for i in range(len(inname) - 1, -1, -1):
+         if (inname[i] == '/'):
+            break
+         outfile = inname[i] + outfile
+      inname = outfile
+
     if outname is None:
       thisout = re.sub(r'.jemdoc$', '', inname) + '.html'
     elif os.path.isdir(outname):
@@ -1625,7 +1635,6 @@ def main():
     else:
       thisout = outname
 
-    infile = io.open(inname, 'rb')
     outfile = io.open(thisout, 'w')
 
 #    print(infile.read())
