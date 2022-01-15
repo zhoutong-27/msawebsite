@@ -45,3 +45,9 @@
 - 相似度较低，有较多类型的数据，fasta格式，以蛋白质数据集为主
 - [http://www.drive5.com/bench/]
 - [https://github.com/rcedgar/balifam]
+- [https://github.com/rcedgar/qscore Q Score 程序]
+
+== extHomFam 数据集
+- 相似度较低，序列长度短(<100bp)，文件内序列数量多(最多415519条)，有金标准对齐，fasta格式，蛋白质数据集
+- 金标准对比结果同样采用 [https://github.com/rcedgar/qscore Q Score 程序]
+- [https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/BO2SVW Dataset Link]
