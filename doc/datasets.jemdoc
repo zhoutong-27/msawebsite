@@ -39,3 +39,9 @@
 
 - 相似度较低，有较多类型的数据，fasta格式
 - [http://bioinfolab.unl.edu/~cstrope/iSG/benchmark/index.html]
+
+== MUSCLE 数据集
+
+- 相似度较低，有较多类型的数据，fasta格式，以蛋白质数据集为主
+- [http://www.drive5.com/bench/]
+- [https://github.com/rcedgar/balifam]
