@@ -1,0 +1,25 @@
+# jemdoc: menu{MENU}{msaligners.html}, nofooter
+= 序列比对器
+
+== Multiple Sequence Aligners
+
+~~~
+{}{table}{TABLENAME}
+软件名称 | 主页 | 适用范围 | 介绍 ||
+ClustalO | [http://www.clustal.org/omega/]   | 蛋白质、DNA、RNA | [clustalo.html 详细] ||
+Dialign-tx | [http://dialign-tx.gobics.de/]   | 蛋白质、DNA、RNA | [dialigntx.html 详细] ||
+HAlign | [http://lab.malab.cn/soft/halign/]   | 蛋白质、DNA、RNA | [halign.html 详细] ||
+Kalign | [http://msa.cgb.ki.se]   | 蛋白质、DNA、RNA | [kalign.html 详细] ||
+MAFFT | [http://www.biophys.kyoto-u.ac.jp/~katoh/programs/align/mafft/] | 蛋白质、DNA、RNA | [mafft.html 详细] ||
+Muscle | [http://www.drive5.com/muscle/] | 蛋白质、DNA、RNA | [muscle.html 详细] ||
+T-Coffee  | [http://www.tcoffee.org] | 蛋白质、DNA、RNA | [tcoffee.html 详细]
+~~~
+
+
+== GENERIC RESOURCES
+
+~~~
+{}{table}{TABLENAME}
+Multiple Sequence Alignment  | [https://en.wikipedia.org/wiki/List_of_sequence_alignment_software]
+~~~
+

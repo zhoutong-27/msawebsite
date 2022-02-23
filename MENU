@@ -1,7 +1,10 @@
 序列比对				
-	Home     		  [index.html]      
-	双序列比对		    [psa.html]
+	Home			[index.html]      
+	双序列比对			[psa.html]
 	多序列比对			[msa.html]
-	测试数据集          [datasets.html]
-	Github				[\https://github.com/malabz/JMSA]
+	评分标准			[measure.html]
+	序列比对器			[msaligners.html]
+	实用工具			[tools.html]
+	测试数据集			[datasets.html]
+	Github			[\https://github.com/malabz/JMSA]
 	

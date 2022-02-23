@@ -1,0 +1,98 @@
+# jemdoc: menu{MENU}{msaligners.html}, nofooter
+= Clustal Omega
+
+== 安装（Unix系统下）
+
+=== 安装clustalo
+~~~
+{安装示例：}{pyint}
+# 下载源代码
+$ wget http://www.clustal.org/omega/clustal-omega-1.2.4.tar.gz
+
+# 解压
+$ tar -xvf clustal-omega-1.2.4.tar.gz
+
+# 进入目录
+$ cd clustal-omega-1.2.4/
+
+# 配置
+$ ./configure
+
+# 编译
+$ make
+
+# 安装
+$ make install
+
+# 环境变量设置，修改启动配置文件
+$ vim ~/.bashrc
+# 将以下内容添加到.bashrc文件中，localPath是clustalo的安装路径
+export PATH=/localPath/clustal-1.2.4:$PATH
+export PATH=/localPath/clustal-1.2.4/src:$PATH
+# 更新启动配置文件
+$ source ~/.bashrc
+~~~
+
+*注意事项：*
+Clustal-Omega需要argtable2([http://argtable.sourceforge.net/])。如果argtable2安装在非标准目录中，您可能需要的配置到它的安装目录。
+
+~~~
+{在使用默认配置安装clustalo时，可能会报错：}{pyint}
+configure: error: Could not find argtable2.h. Try $ ./configure CFLAGS='-Iyour-argtable2-include-path
+
+# 解决方法：安装argtable2后，使用如下命令（localPath是argtable2的安装路径）
+$ ./configure CFLAGS='-I/localPath/argtable2-13/src' LDFLAGS="-L/localPath/argtable2-13/src/.libs -largtable2"'
+~~~
+
+详见：[http://www.clustal.org/omega/INSTALL clustalo官方安装手册]
+
+=== 安装argtable2
+~~~
+{安装示例：}{pyint}
+# 下载源代码
+$ wget http://prdownloads.sourceforge.net/argtable/argtable2-13.tar.gz
+
+# 解压
+$ tar -xvf argtable2-13.tar.gz
+
+# 进入目录
+$ cd argtable2-13
+
+# 配置
+$ ./configure
+
+# 编译
+$ make
+
+# 安装
+$ make install
+
+# 环境变量设置，修改启动配置文件
+$ vim ~/.bashrc
+# 将以下内容添加到.bashrc文件中，localPath是argtable2的安装路径
+export PATH=/localPath/argtable2-13:$PATH
+export PATH=/localPath/argtable2-13/src:$PATH
+export LD_LIBRARY_PATH=//localPath/argtable2-13/src:$LD_LIBRARY_PATH
+# 更新启动配置文件
+$ source ~/.bashrc
+~~~
+
+详见：[https://github.com/jonathanmarvens/argtable2 argtable2]
+
+== 使用
+~~~
+{}{}
+# 最基础的使用方法
+$ clustalo -i my-in-seqs.fa -o my-out-seqs.fa
+
+# 详细使用方法
+$ clustalo --help
+~~~
+
+== 参考内容
+. Sievers, Fabian et al. “Fast, scalable generation of high-quality protein multiple sequence alignments using Clustal Omega.” Molecular systems biology vol. 7 539. 11 Oct. 2011, doi:10.1038/msb.2011.75
+. Sievers, Fabian, and Desmond G Higgins. “Clustal Omega for making accurate alignments of many protein sequences.” Protein science : a publication of the Protein Society vol. 27,1 (2018): 135-145. doi:10.1002/pro.3290
+. [https://www.cnblogs.com/wh-ff-ly520/p/10281711.html clustalo的安装]
+. [https://www.ebi.ac.uk/seqdb/confluence/display/JDSAT/Clustal+Omega+Help+and+Documentation Clustal Omega Help and Documentation]
+
+

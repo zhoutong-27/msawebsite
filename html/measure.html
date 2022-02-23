@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>评分标准</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">序列比对</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="psa.html">双序列比对</a></div>
+<div class="menu-item"><a href="msa.html">多序列比对</a></div>
+<div class="menu-item"><a href="measure.html" class="current">评分标准</a></div>
+<div class="menu-item"><a href="msaligners.html">序列比对器</a></div>
+<div class="menu-item"><a href="tools.html">实用工具</a></div>
+<div class="menu-item"><a href="datasets.html">测试数据集</a></div>
+<div class="menu-item"><a href="https://github.com/malabz/JMSA" target="blank">Github</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>评分标准</h1>
+</div>
+<h2>SP score</h2>
+<p>Sum of pairs (SP) score: Scoring a alignment based on pairwise alignments.
+</p>
+<h3>计算公式</h3>
+<p style="text-align:center">
+\[
+SP\_score(\alpha)=\sum_{i&lt;j} score(\alpha_{ij})
+\]
+</p><p>计算方式分为两种（注：p(-,-)=0）:
+</p>
+<ul>
+<li><p>对多序列对齐中的每一列得分进行计算，最后相加
+</p>
+</li>
+<li><p>对多序列对齐中的每一对PSA得分进行计算，最后相加
+</p>
+</li>
+</ul>
+<h3>参考内容</h3>
+<ol>
+<li><p>Altschul, Stephen F. &ldquo;Gap costs for multiple sequence alignment.&rdquo; Journal of theoretical biology 138.3 (1989): 297-309.
+</p>
+</li>
+<li><p><a href="https://github.com/malabz/MSATOOLS/tree/main/accuracy" target=&ldquo;blank&rdquo;>SP源代码</a>
+</p>
+</li>
+</ol>
+<h2>Q score</h2>
+<p>Q (quality) score is the number of correctly aligned residue pairs divided by the number of residue pairs in the reference alignment. This has previously been termed the developer score and SPS.
+</p>
+<h3>计算公式</h3>
+<p style="text-align:center">
+\[Q = \frac{{\sum\nolimits_{k = 0}^L {q(k)} }}{{\sum\nolimits_{k = 0}^L {ref(k)} }}\]
+</p><p>第k列：\(q(k) = \frac{{tes{t_{match}} \times (tes{t_{match}} - 1)}}{2}\) , \(ref(k) = \frac{{re{f_{match}} \times (re{f_{match}} - 1)}}{2}\)
+</p>
+<p>其中：
+</p>
+<ul>
+<li><p>\(re{f_{match}}\)是在ref文件的第𝑘列中大写碱基的个数
+</p>
+</li>
+<li><p>\(tes{t_{match}}\)是在test文件的第𝑘列中可以和ref文件完全匹配的碱基个数（大写且相同）
+</p>
+</li>
+</ul>
+<h3>参考内容</h3>
+<ol>
+<li><p>Edgar, Robert C. “MUSCLE: multiple sequence alignment with high accuracy and high throughput.” Nucleic acids research vol. 32,5 1792-7. 19 Mar. 2004, doi:10.1093<i>nar</i>gkh340
+</p>
+</li>
+<li><p>Sauder, J M et al. “Large-scale comparison of protein sequence alignment algorithms with structure alignments.” Proteins vol. 40,1 (2000): 6-22. doi:10.1002/(sici)1097-0134(20000701)40:1&lt;6::aid-prot30&gt;3.0.co;2-7
+</p>
+</li>
+<li><p>Thompson, J D et al. “A comprehensive comparison of multiple sequence alignment programs.” Nucleic acids research vol. 27,13 (1999): 2682-90. doi:10.1093<i>nar</i>27.13.2682
+</p>
+</li>
+<li><p><a href="https://www.drive5.com/qscore/" target=&ldquo;blank&rdquo;>Q score源代码</a>
+</p>
+</li>
+</ol>
+<h2>TC score</h2>
+<p>Total column(TC) score is the number of correctly aligned columns divided by the number of columns in the reference alignment; this is Thompson et al.’s CS and is equivalent to Q in the case of two sequences (as in PREFAB).
+</p>
+<h3>计算公式</h3>
+<p style="text-align:center">
+\[TC = \frac{{\sum\nolimits_{k = 0}^L {match(tes{t_k},ref)} }}{{re{f_{upper}}}}\]
+</p><p>其中：
+</p>
+<ul>
+<li><p>\(re{f_{upper}}\)是ref文件总全部都是大写字母的列数
+</p>
+</li>
+<li><p>\({match(tes{t_k},ref)}\)是在test文件中完全匹配(大写且相同)
+</p>
+</li>
+</ul>
+<h3>参考内容</h3>
+<ol>
+<li><p>Edgar, Robert C. “MUSCLE: multiple sequence alignment with high accuracy and high throughput.” Nucleic acids research vol. 32,5 1792-7. 19 Mar. 2004, doi:10.1093<i>nar</i>gkh340
+</p>
+</li>
+<li><p>Thompson, J D et al. “A comprehensive comparison of multiple sequence alignment programs.” Nucleic acids research vol. 27,13 (1999): 2682-90. doi:10.1093<i>nar</i>27.13.2682
+</p>
+</li>
+<li><p><a href="https://www.drive5.com/qscore/" target=&ldquo;blank&rdquo;>TC score源代码</a>
+</p>
+</li>
+</ol>
+</td>
+</tr>
+</table>
+</body>
+</html>
