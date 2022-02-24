@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<title>Clustal Omega</title>
+<!-- MathJax -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+	  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+<!-- End MathJax -->
+</head>
+<body>
+<table summary="Table for page layout." id="tlayout">
+<tr valign="top">
+<td id="layout-menu">
+<div class="menu-category">序列比对</div>
+<div class="menu-item"><a href="index.html">Home</a></div>
+<div class="menu-item"><a href="psa.html">双序列比对</a></div>
+<div class="menu-item"><a href="msa.html">多序列比对</a></div>
+<div class="menu-item"><a href="measure.html">评分标准</a></div>
+<div class="menu-item"><a href="msaligners.html" class="current">序列比对器</a></div>
+<div class="menu-item"><a href="tools.html">实用工具</a></div>
+<div class="menu-item"><a href="datasets.html">测试数据集</a></div>
+<div class="menu-item"><a href="https://github.com/malabz/JMSA" target="blank">Github</a></div>
+</td>
+<td id="layout-content">
+<div id="toptitle">
+<h1>Clustal Omega</h1>
+</div>
+<h2>安装（Unix系统下）</h2>
+<h3>安装clustalo</h3>
+<div class="codeblock">
+<div class="blocktitle">安装示例：</div>
+<div class="blockcontent"><pre>
+<span class = "comment"># 下载源代码</span>
+$ wget http://www.clustal.org/omega/clustal-omega-1.2.4.tar.gz
+
+<span class = "comment"># 解压</span>
+$ tar -xvf clustal-omega-1.2.4.tar.gz
+
+<span class = "comment"># 进入目录</span>
+$ cd clustal-omega-1.2.4/
+
+<span class = "comment"># 配置</span>
+$ ./configure
+
+<span class = "comment"># 编译</span>
+$ make
+
+<span class = "comment"># 安装</span>
+$ make install
+
+<span class = "comment"># 环境变量设置，修改启动配置文件</span>
+$ vim ~/.bashrc
+<span class = "comment"># 将以下内容添加到.bashrc文件中，localPath是clustalo的安装路径</span>
+export PATH=/localPath/clustal-1.2.4:$PATH
+export PATH=/localPath/clustal-1.2.4/src:$PATH
+<span class = "comment"># 更新启动配置文件</span>
+$ source ~/.bashrc
+</pre></div></div>
+<p><b>注意事项：</b>
+Clustal-Omega需要argtable2(<a href="http://argtable.sourceforge.net/" target=&ldquo;blank&rdquo;>http://argtable.sourceforge.net/</a>)。如果argtable2安装在非标准目录中，您可能需要的配置到它的安装目录。
+</p>
+<div class="codeblock">
+<div class="blocktitle">在使用默认配置安装clustalo时，可能会报错：</div>
+<div class="blockcontent"><pre>
+configure: error: Could not find argtable2.h. Try $ ./configure CFLAGS='-Iyour-argtable2-include-path
+
+<span class = "comment"># 解决方法：安装argtable2后，使用如下命令（localPath是argtable2的安装路径）</span>
+$ ./configure CFLAGS='-I/localPath/argtable2-13/src' LDFLAGS="-L/localPath/argtable2-13/src/.libs -largtable2"'
+</pre></div></div>
+<p>详见：<a href="http://www.clustal.org/omega/INSTALL" target=&ldquo;blank&rdquo;>clustalo官方安装手册</a>
+</p>
+<h3>安装argtable2</h3>
+<div class="codeblock">
+<div class="blocktitle">安装示例：</div>
+<div class="blockcontent"><pre>
+<span class = "comment"># 下载源代码</span>
+$ wget http://prdownloads.sourceforge.net/argtable/argtable2-13.tar.gz
+
+<span class = "comment"># 解压</span>
+$ tar -xvf argtable2-13.tar.gz
+
+<span class = "comment"># 进入目录</span>
+$ cd argtable2-13
+
+<span class = "comment"># 配置</span>
+$ ./configure
+
+<span class = "comment"># 编译</span>
+$ make
+
+<span class = "comment"># 安装</span>
+$ make install
+
+<span class = "comment"># 环境变量设置，修改启动配置文件</span>
+$ vim ~/.bashrc
+<span class = "comment"># 将以下内容添加到.bashrc文件中，localPath是argtable2的安装路径</span>
+export PATH=/localPath/argtable2-13:$PATH
+export PATH=/localPath/argtable2-13/src:$PATH
+export LD_LIBRARY_PATH=//localPath/argtable2-13/src:$LD_LIBRARY_PATH
+<span class = "comment"># 更新启动配置文件</span>
+$ source ~/.bashrc
+</pre></div></div>
+<p>详见：<a href="https://github.com/jonathanmarvens/argtable2" target=&ldquo;blank&rdquo;>argtable2</a>
+</p>
+<h2>使用</h2>
+<div class="codeblock">
+<div class="blockcontent"><pre>
+# 最基础的使用方法
+$ clustalo -i my-in-seqs.fa -o my-out-seqs.fa
+
+# 详细使用方法
+$ clustalo --help
+</pre></div></div>
+<h2>参考内容</h2>
+<ol>
+<li><p>Sievers, Fabian et al. “Fast, scalable generation of high-quality protein multiple sequence alignments using Clustal Omega.” Molecular systems biology vol. 7 539. 11 Oct. 2011, doi:10.1038/msb.2011.75
+</p>
+</li>
+<li><p>Sievers, Fabian, and Desmond G Higgins. “Clustal Omega for making accurate alignments of many protein sequences.” Protein science : a publication of the Protein Society vol. 27,1 (2018): 135-145. doi:10.1002/pro.3290
+</p>
+</li>
+<li><p><a href="https://www.cnblogs.com/wh-ff-ly520/p/10281711.html" target=&ldquo;blank&rdquo;>clustalo的安装</a>
+</p>
+</li>
+<li><p><a href="https://www.ebi.ac.uk/seqdb/confluence/display/JDSAT/Clustal+Omega+Help+and+Documentation" target=&ldquo;blank&rdquo;>Clustal Omega Help and Documentation</a>
+</p>
+</li>
+</ol>
+</td>
+</tr>
+</table>
+</body>
+</html>
