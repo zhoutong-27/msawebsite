@@ -10,15 +10,15 @@ jemdoc is a light text-based markup language designed for creating websites. It 
 
    more things about how to edit the jemdoc file, please view the [website](https://jemdoc.jaboc.net/example.html).
 
-2. use python script  to create `html/**.html` file 
+2. use python script to create `html/**.html` file 
 
    ```shell
    # python3
    
    # for signle file
-   $ python jemdoc -c mysite.conf -o html/ /doc/***.jemdoc
+   $ python jemdoc -c mysite.conf -o html/ ./doc/***.jemdoc
    # for all files
-   $ python jemdoc -c mysite.conf -o html/ /doc/*.jemdoc
+   $ python jemdoc -c mysite.conf -o html/ ./doc/*.jemdoc
    ```
 
 ### License
