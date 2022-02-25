@@ -63,14 +63,15 @@ S5 ACTGACC
 </center>
 ~~~
 
-[https://github.com/malabz/Jtmsa/blob/master/MSA_star_align.py 参考代码链接]
+[https://github.com/malabz/Jtmsa/blob/master/MSA_star_align.py Python] [https://github.com/Guuhua/centerstar_MSA C]
 
 === 多核并行
 
 由上文可知，建立得分矩阵选取中心序列是非常耗时的。因此在建立得分矩阵的这个环节，我们可以采取多核并行，加快程序的运行速度。由实际的运行速度来看，并行计算要比单核运行快3.6倍左右（根据电脑的核心数有关，测试电脑的核心数是4核）。
 
 
-[https://github.com/malabz/Jtmsa/blob/master/MSA_Star_Multi_core.py 参考代码链接]
+
+[https://github.com/malabz/Jtmsa/blob/master/MSA_Star_Multi_core.py Python]
 
 
 == 树比对
@@ -125,4 +126,4 @@ S4 ACTGACC
     S4:ACTGACC---
 ~~~
 
-[https://github.com/malabz/JMSA 参考代码链接]
+[https://github.com/malabz/JMSA Python]

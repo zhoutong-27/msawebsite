@@ -28,7 +28,7 @@ MathJax.Hub.Config({
 <div class="menu-item"><a href="msaligners.html">序列比对器</a></div>
 <div class="menu-item"><a href="tools.html">实用工具</a></div>
 <div class="menu-item"><a href="datasets.html">测试数据集</a></div>
-<div class="menu-item"><a href="https://github.com/malabz/JMSA" target="blank">Github</a></div>
+<div class="menu-item"><a href="https://github.com/malabz" target="blank">Github</a></div>
 </td>
 <td id="layout-content">
 <div id="toptitle">
@@ -184,13 +184,30 @@ a[i-1,j]-h-g\\
 c[i-1,j]-g
 \end{cases}
 \]
-</p><p><a href="https://nbviewer.jupyter.org/github/malabz/Jtmsa/blob/master/AffineGap_DP.ipynb" target=&ldquo;blank&rdquo;>Python</a>
+</p><p><a href="https://github.com/Guuhua/PSA/blob/main/python/PSA_Kband.py" target=&ldquo;blank&rdquo;>Python</a> <a href="https://github.com/Guuhua/PSA/blob/main/java/Kband.java" target=&ldquo;blank&rdquo;>Java</a> <a href="https://github.com/Guuhua/PSA/blob/main/c/PSA_kband.c" target=&ldquo;blank&rdquo;>C</a>
 </p>
-<h2>后缀树</h2>
-<p>后缀树比对是先将一条序列构建成一个后缀树，通过建成的后缀树可快速遍历得到两条序列之间的同源区段。选出合适的同源区段，并将其对齐，剩下未对齐的序列采用动态规划的方法对齐，最后将所有对齐的片段拼接起来，得到最终结果。
+<h2>基于同源区段对齐的比对</h2>
+<p>基于同源区段对齐的比对是先将一条序列进行快速索引，通过快速索引可快速遍历得到两条序列之间的同源区段。选出合适的同源区段，并将其对齐，剩下未对齐的序列采用动态规划的方法对齐，最后将所有对齐的片段拼接起来，得到最终结果。
 </p>
-<p><a href="https://github.com/malabz/Jtmsa/blob/master/PSA_Suffixtree.py" target=&ldquo;blank&rdquo;>Python</a>
+<h3>索引方式</h3>
+<p>目前常见的索引方式有两种：
 </p>
+<ul>
+<li><p>后缀树：索引实现 <a href="https://github.com/Guuhua/SuffixTree/blob/main/suffixTree.java" target=&ldquo;blank&rdquo;>java</a> <a href="https://github.com/Guuhua/SuffixTree/blob/main/suffixTree.py" target=&ldquo;blank&rdquo;>python</a> 
+</p>
+</li>
+<li><p>FM-index：索引实现 <a href="https://github.com/Guuhua/FM-index" target=&ldquo;blank&rdquo;>C</a>
+</p>
+</li>
+</ul>
+<h3>比对实现</h3>
+<ul>
+<li><p>基于后缀树的比对 <a href="https://github.com/Guuhua/PSA/blob/main/python/PSA_STree.py" target=&ldquo;blank&rdquo;>Python</a> <a href="https://github.com/Guuhua/PSA/blob/main/java/STAlign.java" target=&ldquo;blank&rdquo;>Java</a>
+</p>
+</li>
+<li><p>基于FM-index的比对 <a href="https://github.com/Guuhua/PSA/blob/main/java/FMAlign.java" target=&ldquo;blank&rdquo;>Java</a> <a href="https://github.com/Guuhua/PSA/blob/main/c/PSA_fmindex.c" target=&ldquo;blank&rdquo;>C</a></p>
+</li>
+</ul>
 </td>
 </tr>
 </table>
