@@ -1,0 +1,2 @@
+dotplot.exe filter=lfs diff=lfs merge=lfs -text
+dotplot filter=lfs diff=lfs merge=lfs -text
