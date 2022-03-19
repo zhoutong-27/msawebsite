@@ -1,128 +1,177 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+          "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-<link rel="stylesheet" href="jemdoc.css" type="text/css" />
-<title>实用工具</title>
-<!-- MathJax -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
-</script>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-	  TeX: { equationNumbers: { autoNumber: "AMS" } }
-});
-</script>
-<!-- End MathJax -->
+    <meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <link rel="stylesheet" href="jemdoc.css" type="text/css" />
+    <title>实用工具</title>
+    <!-- MathJax -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML' async>
+    </script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+              TeX: { equationNumbers: { autoNumber: "AMS" } }
+        });
+    </script>
+    <!-- End MathJax -->
 </head>
 <body>
-<table summary="Table for page layout." id="tlayout">
-<tr valign="top">
-<td id="layout-menu">
-<div class="menu-category">序列比对</div>
-<div class="menu-item"><a href="index.html">Home</a></div>
-<div class="menu-item"><a href="psa.html">双序列比对</a></div>
-<div class="menu-item"><a href="msa.html">多序列比对</a></div>
-<div class="menu-item"><a href="measure.html">评分标准</a></div>
-<div class="menu-item"><a href="msaligners.html">序列比对器</a></div>
-<div class="menu-item"><a href="tools.html" class="current">实用工具</a></div>
-<div class="menu-item"><a href="datasets.html">测试数据集</a></div>
-<div class="menu-item"><a href="https://github.com/malabz" target="blank">Github</a></div>
-</td>
-<td id="layout-content">
-<div id="toptitle">
-<h1>实用工具</h1>
-</div>
-<h2>统计数据集序列信息</h2>
-<h3>介绍：</h3>
-<ul>
-<li><p>计算数据集中序列的信息（序列长度的最大值｜最小值｜总和｜平均值，序列条数，序列之间的相似度）
-</p>
-</li>
-<li><p>作出序列长度分布图和序列相似度分布图
-</p>
-</li>
-</ul>
-<h3>用法：</h3>
-<div class="codeblock">
-<div class="blockcontent"><pre>
+    <table summary="Table for page layout." id="tlayout">
+        <tr valign="top">
+            <td id="layout-menu">
+                <div class="menu-category">序列比对</div>
+                <div class="menu-item"><a href="index.html">Home</a></div>
+                <div class="menu-item"><a href="psa.html">双序列比对</a></div>
+                <div class="menu-item"><a href="msa.html">多序列比对</a></div>
+                <div class="menu-item"><a href="measure.html">评分标准</a></div>
+                <div class="menu-item"><a href="msaligners.html">序列比对器</a></div>
+                <div class="menu-item"><a href="tools.html" class="current">实用工具</a></div>
+                <div class="menu-item"><a href="datasets.html">测试数据集</a></div>
+                <div class="menu-item"><a href="https://github.com/malabz" target="blank">Github</a></div>
+            </td>
+            <td id="layout-content">
+                <div id="toptitle">
+                    <h1>实用工具</h1>
+                </div>
+                <h2>统计数据集序列信息</h2>
+                <h3>介绍：</h3>
+                <ul>
+                    <li>
+                        <p>
+                            计算数据集中序列的信息（序列长度的最大值｜最小值｜总和｜平均值，序列条数，序列之间的相似度）
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            作出序列长度分布图和序列相似度分布图
+                        </p>
+                    </li>
+                </ul>
+                <h3>用法：</h3>
+                <div class="codeblock">
+                    <div class="blockcontent">
+                        <pre>
 python dataInfo.py input.fasta mafft datasetName
-</pre></div></div>
-<p>参数描述：
-</p>
-<dl>
-<dt>input.fasta</dt>
-<dd><p>待计算相似度的数据集，必须为<b>fasta格式</b>
-</p></dd>
-<dt>mafft</dt>
-<dd><p>mafft路径，用于两两序列比对
-</p></dd>
-<dt>datasetName</dt>
-<dd><p>数据集名称，用于命名序列信息文件
-</p></dd>
-</dl>
-<ul>
-<li><p>datasetName.txt  序列基本信息（序列条数和长度）
-</p>
-</li>
-<li><p>datasetName_Distri.png  序列长度分布图
-</p>
-</li>
-<li><p>similarity_datasetName.txt  两两序列相比的相似度值
-</p>
-</li>
-<li><p>similarity_datasetName.png  序列相似度分布图
-</p>
-</li>
-</ul>
-<p><a href="https://github.com/malabz/JMSA" target=&ldquo;blank&rdquo;>源代码</a>
-</p>
-<h2>处理非法字符的脚本</h2>
-<h3>介绍：</h3>
-<ul>
-<li><p>用于处理多序列比对后的fasta文件
-</p>
-</li>
-<li><p>该脚本将RNA序列文件中的碱基“U”替换为“T”，并将非法字符（如“:”）替换为“N”
-</p>
-</li>
-<li><p>处理后的文件存储在 resultName_processed.fasta
-</p>
-</li>
-</ul>
-<h3>用法：</h3>
-<div class="codeblock">
-<div class="blockcontent"><pre>
+</pre>
+                    </div>
+                </div>
+                <p>
+                    参数描述：
+                </p>
+                <dl>
+                    <dt>input.fasta</dt>
+                    <dd>
+                        <p>
+                            待计算相似度的数据集，必须为<b>fasta格式</b>
+                        </p>
+                    </dd>
+                    <dt>mafft</dt>
+                    <dd>
+                        <p>
+                            mafft路径，用于两两序列比对
+                        </p>
+                    </dd>
+                    <dt>datasetName</dt>
+                    <dd>
+                        <p>
+                            数据集名称，用于命名序列信息文件
+                        </p>
+                    </dd>
+                </dl>
+                <ul>
+                    <li>
+                        <p>
+                            datasetName.txt  序列基本信息（序列条数和长度）
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            datasetName_Distri.png  序列长度分布图
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            similarity_datasetName.txt  两两序列相比的相似度值
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            similarity_datasetName.png  序列相似度分布图
+                        </p>
+                    </li>
+                </ul>
+                <p>
+                    <a href="https://github.com/malabz/JMSA" target=&ldquo;blank&rdquo;>源代码</a>
+                </p>
+                <h2>处理非法字符的脚本</h2>
+                <h3>介绍：</h3>
+                <ul>
+                    <li>
+                        <p>
+                            用于处理多序列比对后的fasta文件
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            该脚本将RNA序列文件中的碱基“U”替换为“T”，并将非法字符（如“:”）替换为“N”
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            处理后的文件存储在 resultName_processed.fasta
+                        </p>
+                    </li>
+                </ul>
+                <h3>用法：</h3>
+                <div class="codeblock">
+                    <div class="blockcontent">
+                        <pre>
 python preprocess.py filepath resultName
-</pre></div></div>
-<p>参数描述：
-</p>
-<dl>
-<dt>filepath</dt>
-<dd><p>要处理的fasta文件的路径
-</p></dd>
-<dt>resultName</dt>
-<dd><p>处理后的Fasta文件名
-</p></dd>
-</dl>
-<p><a href="https://github.com/malabz/MSATOOLS/tree/main/preprocess" target=&ldquo;blank&rdquo;>源代码</a>
-</p>
-<h2>处理N的脚本</h2>
-<h3>介绍：</h3>
-<p>在比对核苷酸的序列时，N的存在影响比对的难度。同时，不同的比对软件对于N的处理各不相同，得到的比对结果有的包含N，有的将N删掉了，难以比较软件的精度。该脚本处理数据后，可以降低比对的难度并统一比对后的结果，方便比较软件优劣。
-</p>
-<ul>
-<li><p>比对前删除N
-</p>
-</li>
-<li><p>比对后插回N
-</p>
-</li>
-</ul>
-<h3>用法：</h3>
-<div class="codeblock">
-<div class="blockcontent"><pre>
+</pre>
+                    </div>
+                </div>
+                <p>
+                    参数描述：
+                </p>
+                <dl>
+                    <dt>filepath</dt>
+                    <dd>
+                        <p>
+                            要处理的fasta文件的路径
+                        </p>
+                    </dd>
+                    <dt>resultName</dt>
+                    <dd>
+                        <p>
+                            处理后的Fasta文件名
+                        </p>
+                    </dd>
+                </dl>
+                <p>
+                    <a href="https://github.com/malabz/MSATOOLS/tree/main/preprocess" target=&ldquo;blank&rdquo;>源代码</a>
+                </p>
+                <h2>处理N的脚本</h2>
+                <h3>介绍：</h3>
+                <p>
+                    在比对核苷酸的序列时，N的存在影响比对的难度。同时，不同的比对软件对于N的处理各不相同，得到的比对结果有的包含N，有的将N删掉了，难以比较软件的精度。该脚本处理数据后，可以降低比对的难度并统一比对后的结果，方便比较软件优劣。
+                </p>
+                <ul>
+                    <li>
+                        <p>
+                            比对前删除N
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            比对后插回N
+                        </p>
+                    </li>
+                </ul>
+                <h3>用法：</h3>
+                <div class="codeblock">
+                    <div class="blockcontent">
+                        <pre>
 # 使用前先编译
 g++ deal_N.cpp -o xxx
 
@@ -136,32 +185,105 @@ g++ deal_N.cpp -o xxx
 
 # 3 从源文件和结果文件中生成带有N的最终结果文件
 ./xxx -3 in_original.fasta in_ans_withoutN.fasta out_ans_withN.fasta
-</pre></div></div>
-<p>参数描述：
-</p>
-<dl>
-<dt>1｜-2｜-3</dt>
-<dd><p>选择的功能号
-</p></dd>
-<dt>in_original.fasta</dt>
-<dd><p>带N的比对前的数据
-</p></dd>
-<dt>out_removeN.fasta</dt>
-<dd><p>删掉N的比对前的数据
-</p></dd>
-<dt>recordN.tmp</dt>
-<dd><p>记录N的位置信息文件
-</p></dd>
-<dt>in_ans_withoutN.fasta</dt>
-<dd><p>没有N的比对结果
-</p></dd>
-<dt>out_ans_withN.fasta</dt>
-<dd><p>将N插回原位的比对结果
-</p></dd>
-</dl>
-<p><a href="https://github.com/malabz/MSATOOLS/tree/main/deal_N_tool" target=&ldquo;blank&rdquo;>源代码</a></p>
-</td>
-</tr>
-</table>
+</pre>
+                    </div>
+                </div>
+                <p>
+                    参数描述：
+                </p>
+                <dl>
+                    <dt>1｜-2｜-3</dt>
+                    <dd>
+                        <p>
+                            选择的功能号
+                        </p>
+                    </dd>
+                    <dt>in_original.fasta</dt>
+                    <dd>
+                        <p>
+                            带N的比对前的数据
+                        </p>
+                    </dd>
+                    <dt>out_removeN.fasta</dt>
+                    <dd>
+                        <p>
+                            删掉N的比对前的数据
+                        </p>
+                    </dd>
+                    <dt>recordN.tmp</dt>
+                    <dd>
+                        <p>
+                            记录N的位置信息文件
+                        </p>
+                    </dd>
+                    <dt>in_ans_withoutN.fasta</dt>
+                    <dd>
+                        <p>
+                            没有N的比对结果
+                        </p>
+                    </dd>
+                    <dt>out_ans_withN.fasta</dt>
+                    <dd>
+                        <p>
+                            将N插回原位的比对结果
+                        </p>
+                    </dd>
+                </dl>
+                <p><a href="https://github.com/malabz/MSATOOLS/tree/main/deal_N_tool" target=&ldquo;blank&rdquo;>源代码</a></p>
+                <h2>比对后作图工具</h2>
+                <h3>介绍：</h3>
+                <p>
+                    功能：对.fasta和.maf格式比对后序列作图
+                </p>
+                <p>
+                    前提：序列名称不能带空格，maf不可省略中心序列名称
+                </p>
+                <p>
+                    包含:
+                </p>
+                <ul>
+                    <li>
+                        <p>
+python源码: (python dotplot.py ...)
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+linux可执行程序: (./dotplot ...)
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+windows可执行程序: (dotplot.exe ...)
+                        </p>
+                    </li>
+                </ul>
+                <h3>用法：</h3>
+                <div class="codeblock">
+                    <div class="blockcontent">
+                        <pre>
+1、对fasta格式作图。(有可选参数[指定为中心序列的名字][-number 可容忍的gap数量，默认为0])
+  1)  path.fast [-0]                     (默认0号为中心序列，与文件中其他序列分别做图)
+  2)  path.fast [center_seq_name] [-0]   (指定中心序列，与文件中其他序列分别做图)
+  3)  path.fast seq1_name seq2_name [-0] (指定文件中该两条作图)
+2、对maf格式作图。
+  1)  path.maf center_seq_name           (指定中心序列，与文件中其他序列分别做图)
+  2)  path.maf seq1_name seq2_name       (指定文件中该两条作图)
+</pre>
+                    </div>
+                </div>
+                <p>
+                    环境：
+                </p>
+                <dl>
+                    <dt>
+                        python3.7
+                        matplotplib
+                    </dt>
+                </dl>
+                <p><a href="https://github.com/malabz/MSATOOLS/tree/main/dotplot" target=&ldquo;blank&rdquo;>源代码</a></p>
+            </td>
+        </tr>
+    </table>
 </body>
 </html>
